@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .top-bar
+    :is(
+      .feather-bell,
+      .feather-message-circle,
+      .feather-grid,
+      .feather-maximize,
+      .feather-menu
+    ) {
+    @apply transition-all duration-200 cursor-pointer;
+  }
+
+  .top-bar
+    :is(
+      .feather-bell,
+      .feather-message-circle,
+      .feather-grid,
+      .feather-maximize
+    ):hover {
+    @apply stroke-blue-500;
+  }
+
+  .top-bar .left-side :is(.notification, .messages) {
+    @apply before:content-[''] before:absolute before:w-[6px] before:h-[6px] before:bg-red-500 before:rounded-full before:-top-1 before:-left-2;
+  }
+
+  .top-bar-boxes {
+    @apply bg-white shadow-md rounded-md w-[300px] absolute left-0 top-8 z-[9999]
+  }
+
+  .box-container {
+    @apply bg-white p-5 rounded-lg;
+  }
+
+  .shadow-active{
+    @apply shadow-lg
+  }
+
+  .menu-category {
+    @apply block text-[11px] pr-4 my-2;
+  }
+
+  .sidebar-menu li {
+    @apply transition-all duration-500 text-sm cursor-pointer;
+  }
+
+  .sidebar-menu li:not(.small):hover {
+    @apply bg-[#ecf1f3];
+  }
+
+  .sidebar-menu li.small:hover svg{
+    @apply stroke-blue-500
+  }
+
+  .sidebar-menu.small a.active button,
+  .sidebar-menu.small li:has(a.active) > div{
+    @apply bg-blue-500 rounded-md 
+  }
+
+  .sidebar-menu.small li:has(a.active) svg{
+    @apply stroke-white
+  }
+
+  .sidebar-menu li a {
+    @apply py-3 block w-full transition-all duration-500;
+  }
+
+  .sidebar-menu li a.active {
+    @apply text-blue-500;
+  }
+
+  .dropdown-content {
+    @apply transition-all duration-500 overflow-hidden;
+  }
+
+  .dropdown-content li a {
+    @apply block px-14;
+  }
+
+  .dropdown-arrow {
+    @apply rotate-[540deg] transition-all duration-500;
+  }
+
+  .dropdown-arrow.active {
+    @apply rotate-0;
+  }
+
+  .sidebar-single-item {
+    @apply flex items-center gap-2 pr-7;
+  }
+
+  .register-form input {
+    @apply border-[1px] border-gray-300 outline-none px-3 py-2 rounded-[5px] text-[15px];
+  }
+
+  .carrot-arrow {
+    @apply w-0 h-0 border-r-4 border-l-4 border-[transparent];
+  }
+
+  .recent-income-table > div {
+    @apply flex justify-between text-xs p-3 border-b-[1px] border-gray-300;
+  }
+
+  .income-distribution-table > div {
+    @apply flex justify-between text-xs p-3;
+  }
+
+  .custom-checkbox-animation {
+    @apply transition-all duration-100 delay-100 ease-in-out;
+  }
+
+  .custom-checkbox-label {
+    @apply w-[30px] h-4 relative inline-block overflow-hidden rounded-full bg-white border-[1px] border-gray-300;
+  }
+
+  .custom-checkbox-label::before {
+    @apply content-[''] absolute inset-0 bg-blue-500 opacity-0 custom-checkbox-animation;
+  }
+
+  .custom-checkbox-label::after {
+    @apply content-[''] absolute top-[1px] right-[2px] bg-gray-300 w-3 h-3 rounded-full custom-checkbox-animation;
+  }
+
+  .custom-checkbox:checked + .custom-checkbox-label::before {
+    @apply opacity-100;
+  }
+
+  .custom-checkbox:checked + .custom-checkbox-label::after {
+    @apply right-[calc(100%-14px)] bg-white;
+  }
+
+  .recent-income-table span {
+    @apply flex-1;
+  }
+
+  .recent-income-table span:last-child {
+    @apply text-left;
+  }
+
+  .select-box {
+    @apply absolute flex flex-col transition-all duration-300 left-0 border-[1px] shadow-md w-32 bg-white rounded-md py-2 overflow-hidden z-50;
+  }
+
+  .select-box span {
+    @apply hover:bg-[#ecf1f3] hover:text-blue-500 px-3 py-2 transition-all duration-300 text-right text-xs font-bold;
+  }
+
+  .small-btn {
+    @apply rounded-md hover:bg-gray-300 border-[1px] border-gray-300 transition-all duration-300 cursor-pointer;
+  }
+
+  .profile-nav-pill {
+    @apply flex-auto rounded-md py-3 text-sm outline-none transition-all duration-300;
+  }
+
+  .profile-nav-pill.active {
+    @apply bg-blue-500 text-white;
+  }
+
+  .price-table thead td{
+    @apply py-12
+  }
+
+  .price-table span {
+    @apply text-xs;
+  }
+  .price-table h2 {
+    @apply font-bold text-3xl mt-4;
+  }
+
+  .price-table tbody svg{
+    @apply mx-auto
+  }
+
+  .post-content p{
+    @apply my-5 text-sm
+  }
+
+  .err-msg{
+    @apply text-red-500 text-sm text-right
+  }
+
+  .swal2-icon{
+    @apply text-sm bg-white
+  }
+
+  .new-contact-field{
+    @apply w-[470px] flex flex-col justify-center gap-2
+  }
+
+  .new-contact-field input{
+    @apply border-2 outline-none rounded-md p-2 text-sm placeholder:text-gray-300
+  }
+
+  .large-table tr{
+    @apply border-b-2 border-gray-300
+  }
+
+  .large-table tr td {
+    @apply p-2
+  }
+
+  .large-table tr th{
+    @apply after:content-["|"] after:absolute after:left-0 relative p-2
+  }
+
+  .todo-aside-list li{
+    @apply border-b-[1px] border-gray-300
+  }
+
+  .todo-aside-list li > div{
+    @apply flex items-center gap-2 px-5 py-3
+  }
+
+  .todo-aside-list li > div button{
+    @apply text-sm w-full text-right
+  }
+}
