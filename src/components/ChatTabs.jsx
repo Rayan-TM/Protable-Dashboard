@@ -14,13 +14,13 @@ export default function ChatTabs() {
       <ul className="flex border-b-[1px]">
         {tabs.map((tab) => (
           <li
+            key={tab}
             onClick={() => setCurrentTab(tab)}
             className={`${
               currentTab === tab
                 ? "text-blue-500 bg-white border-b-white"
                 : "border-white border-b-gray-200"
             } border-[1px] -mb-[1px] rounded-t-md py-2 px-4 text-sm font-medium cursor-pointer`}
-            key={tab}
           >
             {tab}
           </li>
@@ -82,10 +82,15 @@ export default function ChatTabs() {
                 </TabContent>
               ))
             : contacts.map((contact) => (
-                <TabContent 
-                imgSrc={contact.imgSrc ? contact.imgSrc : "./assets/images/default-avatar.webp"}
-                username={`${contact.firstname} ${contact.lastname}`}
-                subtitle={contact.address}>
+                <TabContent
+                  imgSrc={
+                    contact.imgSrc
+                      ? contact.imgSrc
+                      : "./assets/images/default-avatar.webp"
+                  }
+                  username={`${contact.firstname} ${contact.lastname}`}
+                  subtitle={contact.address}
+                >
                   <Phone size={18} />
                   <Messages size={18} />
                   <Video size={18} />

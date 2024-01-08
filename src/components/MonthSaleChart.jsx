@@ -14,7 +14,7 @@ export default function MonthSaleChart() {
   const monthlySaleData = datas.find(data => data.date === title)
 
   return (
-    <div className={`${toggleShadow ? "shadow-active" : ""} box-container w-[70%]`}>
+    <div className={`${toggleShadow ? "shadow-active" : ""} box-container w-[70%] laptop:w-full`}>
       <div className="flex justify-between mb-14">
         <span className="text-sm">فروش {title}</span>
         <SelectBox

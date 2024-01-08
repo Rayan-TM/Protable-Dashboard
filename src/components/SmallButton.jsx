@@ -32,9 +32,9 @@ export default function SmallButton({
       <span
         className={`${direction} badge w-max absolute ${
           isHovered
-            ? "opacity-100"
-            : "opacity-0"
-        } bg-gray-400 text-white text-xs p-2 rounded-md transition-all duration-300 cursor-default`}
+            ? "opacity-100 z-0"
+            : "opacity-0 -z-30"
+        } bg-gray-400 text-white text-xs p-2 rounded-md transition-opacity duration-300 cursor-default`}
       >
         {title}
       </span>

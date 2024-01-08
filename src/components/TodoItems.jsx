@@ -7,7 +7,8 @@ import TodoDetails from "./TodoDetails";
 
 export default function TodoItems() {
   const { toggleShadow } = useContext(globalContext);
-  const { selectedTodo, filteredItems} = useContext(TodoContext);
+  const { selectedTodo, filteredItems, searchedItems } =
+    useContext(TodoContext);
 
   return (
     <div
@@ -17,16 +18,16 @@ export default function TodoItems() {
         toggleShadow ? "shadow-active" : ""
       } bg-white rounded-lg custom-scrollbar max-h-[370px] overflow-y-scroll overflow-hidden list-container`}
     >
-      {filteredItems.length > 0 ? (
-        filteredItems.map((data) => (
-          <TodoItem key={data.id} {...data}/>
-        ))
+      {searchedItems.length ? (
+        searchedItems.map((data) => <TodoItem key={data.id} {...data} />)
+      ) : filteredItems.length ? (
+        filteredItems.map((data) => <TodoItem key={data.id} {...data} />)
       ) : (
         <span className="text-center font-medium block py-2">
           وظیفه ای وجود ندارد
         </span>
       )}
-      {selectedTodo && <TodoDetails data={selectedTodo}/>}
+      {selectedTodo && <TodoDetails data={selectedTodo} />}
     </div>
   );
 }

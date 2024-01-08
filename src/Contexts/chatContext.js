@@ -30,7 +30,7 @@ export default function ChatContextProvider({ children }) {
   }
 
   return (
-    <chatContext.Provider value={{ contacts, callData, chatData, chooseColor, selectHandler, currentChat }}>
+    <chatContext.Provider value={{ contacts, callData, chatData, chooseColor, selectHandler, currentChat, setCurrentChat }}>
       {children}
     </chatContext.Provider>
   );

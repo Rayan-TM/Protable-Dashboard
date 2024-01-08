@@ -1,13 +1,21 @@
 import React, { useContext } from "react";
 import SmallButton from "./SmallButton";
-import { Video, Phone, UserPlus, Smile, Send, PaperClip } from "./icons";
+import {
+  Video,
+  Phone,
+  UserPlus,
+  Smile,
+  Send,
+  PaperClip,
+  Cancel,
+} from "./icons";
 import TabContent from "./TabContent";
 import SingleChatMessage from "./SingleChatMessage";
 import ChatDivider from "./ChatDivider";
 import { chatContext } from "../Contexts/chatContext";
 
 export default function ChatLeftSide() {
-  const { currentChat } = useContext(chatContext);
+  const { currentChat, setCurrentChat } = useContext(chatContext);
   const options = [
     { title: "شروع تماس تصویری", icon: <Video size={19} /> },
     { title: "شروع تماس صوتی", icon: <Phone size={19} /> },
@@ -15,7 +23,13 @@ export default function ChatLeftSide() {
   ];
 
   return (
-    <div className="w-full mr-5 flex-col flex justify-between">
+    <div
+      className={`${
+        currentChat
+          ? "laptop:bg-white laptop:mr-0 laptop:absolute laptop:inset-0 laptop:left-3 w-full rounded-md px-4"
+          : "laptop:hidden"
+      } mr-5 w-2/3 flex-col flex justify-between `}
+    >
       {currentChat && (
         <>
           <TabContent
@@ -29,6 +43,12 @@ export default function ChatLeftSide() {
                 {option.icon}
               </SmallButton>
             ))}
+            <button
+              onClick={() => setCurrentChat(null)}
+              className="laptop:block hidden bg-gray-200 px-3 py-1 rounded-md hover:bg-gray-400"
+            >
+              <Cancel />
+            </button>
           </TabContent>
           <div className="h-[300px] pt-5 overflow-hidden overflow-y-auto custom-scrollbar">
             {currentChat.chats.map((chat) => (

@@ -6,7 +6,7 @@ import { Search } from "./icons";
 export default function ChatRightSide() {
   const [searchValue, setSearchValue] = useState("");
   return (
-    <div className="w-1/2 border-l-[1px] pl-4">
+    <div className="w-1/3 border-l-[1px] pl-4 laptop:w-full">
       <div className="top-section">
         <div className="flex gap-4">
           <Avatar src="./assets/images/man_avatar3.jpg" avatarSize={30} />

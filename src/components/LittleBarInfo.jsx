@@ -13,7 +13,7 @@ export default function LittleBarInfo({
   const {toggleShadow} = useContext(globalContext)
 
   return (
-    <div className={`${toggleShadow ? "shadow-active" : ""} box-container`}>
+    <div className={`${toggleShadow ? "shadow-active" : ""} box-container w-full`}>
       <span className="text-sm mb-7 block">{title}</span>
       <div className="w-2/3 mx-auto flex flex-col text-center gap-3">
         <LittleBarChart

@@ -5,19 +5,23 @@ const TodoContext = createContext();
 
 export default function TodoContextProvider({ children }) {
   const baseUrl = "http://localhost:4000/todoPageItems";
-  const { datas, editItem } = useFetch(baseUrl);
+  const { datas, editItem, setItem } = useFetch(baseUrl);
   const [filteredItems, setFilteredItems] = useState([]);
   const [filterLabel, setFilterLabel] = useState("فیلتر");
-  const [searchValue, setSearchValue] = useState("")
-  const [selectedTodo, setSelectedTodo] = useState("")
+  const [searchValue, setSearchValue] = useState("");
+  const [searchedItems, setSearchedItems] = useState([]);
+  const [selectedTodo, setSelectedTodo] = useState("");
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
 
   useEffect(() => {
     filterItemsHandler();
   }, [filterLabel, datas]);
 
-  useEffect(() => {
-    setFilteredItems(filteredItems.filter(item => item.title.includes(searchValue)))
-  }, [searchValue])
+  function searchHandler() {
+    setSearchedItems(
+      filteredItems.filter((item) => item.title.includes(searchValue))
+    );
+  }
 
   function changeState(id, prop) {
     const filtereditem = datas.filter((data) => data.id === id);
@@ -36,17 +40,23 @@ export default function TodoContextProvider({ children }) {
       : (prop = null);
 
     setFilteredItems(
-      filterLabel === "فیلتر" ? datas : datas.filter((data) => data[prop])
+      filterLabel === "فیلتر"
+        ? datas.reverse()
+        : datas.filter((data) => data[prop]).reverse()
     );
   }
 
   function sortItems(label) {
-    let sorted
+    let sorted;
     if (label === "صعودی") {
-      sorted = [...filteredItems].sort((a, b) => a.title.localeCompare(b.title));
+      sorted = [...filteredItems].sort((a, b) =>
+        a.title.localeCompare(b.title)
+      );
       setFilteredItems(sorted);
-    }else{
-      sorted = [...filteredItems].sort((a, b) => b.title.localeCompare(a.title));
+    } else {
+      sorted = [...filteredItems].sort((a, b) =>
+        b.title.localeCompare(a.title)
+      );
       setFilteredItems(sorted);
     }
   }
@@ -64,7 +74,12 @@ export default function TodoContextProvider({ children }) {
         searchValue,
         setSearchValue,
         setSelectedTodo,
-        selectedTodo
+        selectedTodo,
+        setItem,
+        searchedItems,
+        searchHandler,
+        isSideBarOpen,
+        setIsSideBarOpen,
       }}
     >
       {children}

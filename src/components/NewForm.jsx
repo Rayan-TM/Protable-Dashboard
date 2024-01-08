@@ -93,7 +93,7 @@ export default function NewForm({ title, initValues, submitFunc }) {
               <button
                 className={`${
                   isSubmitting ? "bg-blue-400" : "bg-blue-500"
-                }  text-white px-8 py-3 self-end rounded-md`}
+                }  text-white px-8 py-3 self-end rounded-md tablet:w-full`}
                 type="submit"
                 disabled={isSubmitting}
               >

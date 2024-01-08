@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import USAMap from "./Maps/USAMap";
 import GermanyMap from "./Maps/GermanyMap";
 import IranMap from "./Maps/IranMap";
@@ -13,13 +13,17 @@ export default function IncomeDistribution() {
   const { datas, isPending, error } = useFetch(
     "http://localhost:4000/IncomeDistributionTableDatas"
   );
-  const {toggleShadow} = useContext(globalContext)
+  const { toggleShadow } = useContext(globalContext);
 
   const [title, selectHandler] = useSelect("آمریکا");
-  const tableData = datas.find(data => data.country === title)
+  const tableData = datas.find((data) => data.country === title);
 
   return (
-    <div className={`${toggleShadow ? "shadow-active" : ""} box-container relative`}>
+    <div
+      className={`${
+        toggleShadow ? "shadow-active" : ""
+      } box-container relative`}
+    >
       <div className="flex justify-between">
         <span className="text-sm">توزیع درآمد</span>
         <SelectBox

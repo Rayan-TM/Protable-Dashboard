@@ -15,7 +15,7 @@ export default function PriceTable() {
   return (
     <div className="m-8">
       <PriceTableHeader priceTableData={datas} />
-      <div className="flex mt-8 gap-8">
+      <div className="flex laptop:flex-wrap mt-8 gap-8">
         {cartTypes.map((type) => (
           <PriceTableCart
             key={type[0]}

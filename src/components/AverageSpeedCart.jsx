@@ -6,7 +6,7 @@ export default function AverageSpeedCart({chartPercent, chartColor, goalRecord, 
   const {toggleShadow} = useContext(globalContext)
 
   return (
-    <div className={`${toggleShadow ? "shadow-active" : ""} box-container flex items-center gap-3`}>
+    <div className={`${toggleShadow ? "shadow-active" : ""} box-container flex items-center gap-3 pc:w-full`}>
       <div>
         <CircleChart percent={chartPercent} color={chartColor}/>
       </div>

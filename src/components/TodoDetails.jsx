@@ -14,16 +14,16 @@ export default function TodoDetails({ data }) {
           <button onClick={() => setSelectedTodo("")}>
             <Logout />
           </button>
-          <span className="font-medium">
-            {data.title}
-          </span>
+          <span className="font-medium">{data.title}</span>
         </div>
         <div className="flex gap-3">
-          {data.isChecked && <SmallButton isInTodoList title="تاریخ" bgColor="bg-green-500 px-3">
-            <div className="flex items-center gap-2 text-sm font-medium  ">
-              <Check color="#000" size={14} /> اتمام یافته
-            </div>
-          </SmallButton>}
+          {data.isChecked && (
+            <SmallButton isInTodoList title="تاریخ" bgColor="bg-green-500 px-3">
+              <div className="flex items-center gap-2 text-sm font-medium  ">
+                <Check color="#000" size={14} /> اتمام یافته
+              </div>
+            </SmallButton>
+          )}
           <SmallButton hasBorder title="ویرایش وظیفه">
             <Edit size={14} />
           </SmallButton>
@@ -38,18 +38,22 @@ export default function TodoDetails({ data }) {
       </div>
       <div className="main">
         <div className="flex justify-between items-center py-5">
-          <TodoParticipants participants={data.participants}/>
+          <TodoParticipants participants={data.participants} />
           <div className="flex gap-3 items-center">
-            <TodoLabel label={data.label}/>
+            <TodoLabel labels={data.labels} />
             <Star color={data.hasStar ? "#FFB822" : "#BABABA"} size={18} />
-            <span className="text-gray-300 text-xs font-medium">{data.date}</span>
+            <div className="text-gray-300 text-xs font-medium whitespace-nowrap flex flex-col gap-2">
+              <span>
+                {data.date}
+              </span>
+              <span>
+                {data.time}
+              </span>
+            </div>
           </div>
         </div>
         <p className="text-sm leading-6">{data.content}</p>
       </div>
-
     </div>
-
-    
   );
 }

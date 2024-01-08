@@ -23,10 +23,9 @@ export default function App() {
                 <Footer />
               </div>
             </div>
-            <div className="overlay bg-gray-300/50 fixed inset-0 hidden tv:block"></div>
           </>
         ) : (
-          <div className="bg-gray-200 font-iransans text-gray-400 min-h-screen p-20">
+          <div className="bg-gray-200 font-iransans text-gray-400 min-h-screen p-20 tablet:p-10">
             {router}
           </div>
         )}

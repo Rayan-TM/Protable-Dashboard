@@ -10,45 +10,20 @@ import {
   ShopBag,
   Copy,
 } from "./icons";
-import DropdownItem from "./DropdownItem";
 import DropLeftItem from "./DropLeftItem";
 import SmallButton from "./SmallButton";
 import { globalContext } from "../Contexts/globalContext";
+import LargeSidebarMenu from "./LargeSidebarMenu";
 
-export default function SidebarMenu() {
+export default function SidebarMenu({ menuItems }) {
   const { toggleSidebar } = useContext(globalContext);
-
-  const sidebarMenuItems = [
-    {
-      title: "داشبورد",
-      links: [
-        { id: 1, title: "داشبورد 1", src: "/" },
-        { id: 2, title: "داشبورد 2", src: "/dashboard_support" },
-      ],
-    },
-    {
-      title: "احراز هویت",
-      links: [
-        { id: 1, title: "ورود", src: "/login" },
-        { id: 2, title: "ثبت نام", src: "/register" },
-        { id: 3, title: "بازیابی رمز عبور", src: "/password_recovery" },
-      ],
-    },
-    {
-      title: "صفحات",
-      links: [
-        { id: 1, title: "پروفایل", src: "/profile" },
-        { id: 2, title: "جدول قیمت ها", src: "/price_table" },
-      ],
-    },
-  ];
 
   return (
     <>
       {toggleSidebar ? (
         <ul className="sidebar-menu small">
           <hr className="my-5" />
-          <DropLeftItem {...sidebarMenuItems[0]}>
+          <DropLeftItem {...menuItems[0]}>
             <BarChart1 size={22} color="#BABABA" />
           </DropLeftItem>
           <li className="relative small group ">
@@ -108,50 +83,15 @@ export default function SidebarMenu() {
             </NavLink>
           </li>
           <hr className="my-5" />
-          <DropLeftItem {...sidebarMenuItems[1]}>
+          <DropLeftItem {...menuItems[1]}>
             <User size={22} color="#BABABA" />
           </DropLeftItem>
-          <DropLeftItem {...sidebarMenuItems[2]}>
+          <DropLeftItem {...menuItems[2]}>
             <Copy size={22} color="#BABABA" />
           </DropLeftItem>
         </ul>
       ) : (
-        <ul className="sidebar-menu">
-          <span className="menu-category">اصلی</span>
-          <DropdownItem {...sidebarMenuItems[0]}>
-            <BarChart1 size={17} color="#BABABA" />
-          </DropdownItem>
-          <li className="sidebar-single-item">
-            <Messages size={17} stroke="#BABABA" />
-            <NavLink to="/chat">گفتگو</NavLink>
-          </li>
-          <li className="sidebar-single-item">
-            <CheckCircle size={17} color="#BABABA" />
-            <NavLink to="/todo">برای انجام</NavLink>
-          </li>
-
-          <span className="menu-category">دسترسی سریع</span>
-          <li className="sidebar-single-item">
-            <Users size={17} color="#BABABA" />
-            <NavLink to="/contacts">مخاطبین</NavLink>
-          </li>
-          <li className="sidebar-single-item">
-            <UserPlus size={17} color="#BABABA" />
-            <NavLink to="/new_contact">مخاطب جدید</NavLink>
-          </li>
-          <li className="sidebar-single-item">
-            <ShopBag size={17} color="#BABABA" />
-            <NavLink to="/products">محصولات</NavLink>
-          </li>
-
-          <span className="menu-category">متفرقه</span>
-          <DropdownItem {...sidebarMenuItems[1]}>
-            <User size={17} color="#BABABA" />
-          </DropdownItem>
-          <DropdownItem {...sidebarMenuItems[2]}>
-            <Copy size={17} color="#BABABA" />
-          </DropdownItem>
-        </ul>
+        <LargeSidebarMenu menuItems={menuItems}/>
       )}
     </>
   );

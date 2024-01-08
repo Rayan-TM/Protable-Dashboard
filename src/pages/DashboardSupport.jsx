@@ -18,19 +18,19 @@ export default function DashboardSupport() {
       <small className="mt-5 text-xs font-medium block">
         خوش آمدید، <span className="text-blue-500">جان اسنو</span>
       </small>
-      <div className="flex gap-8 mt-8">
+      <div className="flex laptop:flex-wrap gap-8 mt-8">
         {smallTicketInfo.map((info) => (
           <SmallTicket key={info.id} {...info} />
         ))}
       </div>
-      <div className="flex gap-8 mt-8">
+      <div className="flex pc:flex-wrap gap-8 mt-8">
         <TicketState />
-        <div className="w-1/3 flex flex-col gap-8 ">
+        <div className="w-1/3 pc:flex-row pc:w-full laptop:flex-col flex flex-col gap-8 ">
           <AverageSpeedCart {...averageSpeedCartData[0]} />
           <AverageSpeedCart {...averageSpeedCartData[1]} />
         </div>
       </div>
-      <div className="flex gap-8 mt-8">
+      <div className="flex laptop:flex-wrap gap-8 mt-8">
         <TotalScore />
         <CustomerSatisfaction />
       </div>

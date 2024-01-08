@@ -24,7 +24,7 @@ export default function ProfileImages() {
           <img
             key={imgSrc}
             alt="profile images"
-            className="rounded-md w-20"
+            className="rounded-md w-20 laptop:w-40 tablet:w-full"
             src={`./assets/images/portfolio-${imgSrc}.jpg`}
           />
         ))}

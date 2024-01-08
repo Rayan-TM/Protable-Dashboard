@@ -142,7 +142,7 @@
   }
 
   .select-box {
-    @apply absolute flex flex-col transition-all duration-300 left-0 border-[1px] shadow-md w-32 bg-white rounded-md py-2 overflow-hidden z-50;
+    @apply absolute flex flex-col transition-all duration-300 left-0 border-[1px] shadow-md w-32 bg-white rounded-md py-2 max-h-[200px] overflow-y-auto z-50;
   }
 
   .select-box span {
@@ -169,7 +169,7 @@
     @apply text-xs;
   }
   .price-table h2 {
-    @apply font-bold text-3xl mt-4;
+    @apply font-bold text-3xl mt-4 laptop:text-xl;
   }
 
   .price-table tbody svg{
@@ -189,7 +189,7 @@
   }
 
   .new-contact-field{
-    @apply w-[470px] flex flex-col justify-center gap-2
+    @apply w-[48%] tablet:w-full flex flex-col justify-center gap-2
   }
 
   .new-contact-field input{
@@ -201,11 +201,11 @@
   }
 
   .large-table tr td {
-    @apply p-2
+    @apply p-2 min-w-[100px]
   }
 
   .large-table tr th{
-    @apply after:content-["|"] after:absolute after:left-0 relative p-2
+    @apply after:content-["|"] after:absolute after:left-0 relative p-2 min-w-[100px]
   }
 
   .todo-aside-list li{
@@ -218,5 +218,21 @@
 
   .todo-aside-list li > div button{
     @apply text-sm w-full text-right
+  }
+
+  .new-todo-form > div{
+    @apply flex items-center w-full
+  }
+
+  .new-todo-form > div label{
+    @apply w-[150px] text-sm
+  }
+
+  .new-todo-form > div input{
+    @apply outline-none border-[1px] border-gray-300 p-2 rounded-md text-sm w-full
+  }
+
+  .date-picker .days > div{
+    @apply py-1 
   }
 }

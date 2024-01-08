@@ -14,9 +14,9 @@ export default function SmallSaleChart({
   const {toggleShadow} = useContext(globalContext)
 
   return (
-    <div className={`${toggleShadow ? "shadow-active" : ""} relative w-1/3 box-container pb-0`}>
+    <div className={`${toggleShadow ? "shadow-active" : ""} relative w-1/3 laptop:w-full box-container pb-0`}>
       <div
-        className={`absolute top-7 left-7 w-11 h-11 flex justify-center items-center rounded-full ${iconColor}`}
+        className={`absolute top-7 left-6 w-11 h-11 flex justify-center items-center rounded-full ${iconColor}`}
       >
         {icon}
       </div>

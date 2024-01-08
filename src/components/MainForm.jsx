@@ -25,7 +25,7 @@ export default function MainForm({
   validationSchema,
 }) {
   return (
-    <div className="bg-white w-[440px] mx-auto rounded-md p-10 text-center shadow-md">
+    <div className="bg-white w-[440px] tablet:w-full mx-auto rounded-md p-10 text-center shadow-md">
       <h1 className="text-2xl font-bold my-10">
         <Link to="/">
           Pro<span className="text-blue-500 ">table</span>

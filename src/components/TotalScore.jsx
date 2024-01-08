@@ -8,7 +8,7 @@ export default function TotalScore() {
   const {datas} = useFetch('http://localhost:4000/totalScore')
 
   return (
-    <div className={`${toggleShadow ? "shadow-active" : ""} box-container flex flex-col gap-5 w-1/2`}>
+    <div className={`${toggleShadow ? "shadow-active" : ""} box-container flex flex-col gap-5 w-1/2 laptop:w-full`}>
       <span className="text-sm">امتیاز کل</span>
       <span className="text-sm text-gray-300 font-medium">
         کیفیت عملکرد تیم پشتیبانی را بسنجید.

@@ -4,7 +4,7 @@ import useMap from "../../hooks/useMap";
 export default function IranMap() {
   const { countryName, mapTitle, getData, removeData } = useMap();
   return (
-    <div className="scale-[.85] -mr-10">
+    <div className="scale-[.85] iphone:scale-[.7] iphone:w-[135%] iphone:h-[280px] -mr-10">
       {countryName && (
         <div
           id="map-title"
@@ -14,9 +14,9 @@ export default function IranMap() {
           {countryName}
         </div>
       )}
-      <svg className="map">
+      <svg className="map  ">
         <g
-          className="cursor-pointer"
+          className="cursor-pointer iphone:scale-[.7]"
           onMouseMove={(e) => getData(e)}
           onMouseLeave={removeData}
         >

@@ -27,9 +27,9 @@ export default function TodoItem(data) {
         data.isDeleted && filterLabel !== "حذف شده" ? "hidden" : "flex"
       } ${
         isDragged ? "opacity-60" : "opacity-100"
-      } justify-between items-center py-3 px-5 first:rounded-t-lg last:rounded-b-lg cursor-pointer z-[99] item`}
+      } justify-between items-center py-3 px-5 first:rounded-t-lg last:rounded-b-lg z-[99] item`}
     >
-      <div className="flex gap-3 items-center w-full">
+      <div className="flex gap-3 items-center">
         <div className="cursor-move">
           <Move size={18} />
         </div>
@@ -38,20 +38,20 @@ export default function TodoItem(data) {
           type="checkbox"
           checked={data.isChecked}
         />
-        <div onClick={() => changeState(data.id, "hasStar")}>
+        <div className="cursor-pointer" onClick={() => changeState(data.id, "hasStar")}>
           <Star color={data.hasStar ? "#FFB822" : "#BABABA"} size={18} />
         </div>
         <span
           onClick={() => setSelectedTodo(data)}
           className={`${
             data.isChecked ? "line-through text-green-500" : ""
-          } text-sm w-full`}
+          } text-sm cursor-pointer`}
         >
           {data.title}
         </span>
       </div>
-      <div className="flex gap-3 items-center justify-end">
-        <TodoLabel label={data.label} />
+      <div className="flex gap-3 items-center justify-end max-w-full">
+        <TodoLabel labels={data.labels} />
         <TodoParticipants participants={data.participants}/>
         <div className="cursor-pointer">
           <div onClick={() => changeState(data.id, "isDeleted")}>

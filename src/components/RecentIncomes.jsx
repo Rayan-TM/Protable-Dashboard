@@ -34,7 +34,7 @@ export default function RecentIncomes() {
   
   return (
     <div className={`${toggleShadow ? "shadow-active" : ""} box-container mt-8`}>
-      <div className="flex justify-between">
+      <div className="flex justify-between ">
         <span className="text-sm">درآمدهای اخیر شما</span>
         <SelectBox
           icon={<ArrowDown size={10} />}
@@ -49,8 +49,8 @@ export default function RecentIncomes() {
           onSelect={selectHandler}
         />
       </div>
-      <div className="flex items-start gap-8 mt-7">
-        <div className="w-1/2 flex flex-col gap-4">
+      <div className="flex items-start gap-8 mt-7 pc:flex-wrap">
+        <div className="w-1/2 flex flex-col gap-4 pc:w-full pc:flex-row pc:justify-between laptop:flex-col">
           {recentIncomeInfoTemplate.map((info) => (
             <RecentIncomeBox key={info.id} {...info} date={title} />
           ))}

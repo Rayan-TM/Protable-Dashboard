@@ -10,7 +10,7 @@ export default function PriceTableCart({
   const {toggleShadow} = useContext(globalContext)
 
   return (
-    <div className={`${bgColor} ${toggleShadow ? "shadow-active" : ""} box-container w-1/3 text-center`}>
+    <div className={`${bgColor} ${toggleShadow ? "shadow-active" : ""} box-container w-1/3 text-center laptop:w-2/3 laptop:mx-auto tablet:w-full`}>
       <div className="text-center">
         <span className="text-xs">{type[1]}</span>
         <h2 className="font-bold text-3xl mt-4">{type[2]}</h2>

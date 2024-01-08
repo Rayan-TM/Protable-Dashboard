@@ -15,11 +15,9 @@ export default function ProfileNavPills() {
   }
 
   return (
-    <div className={`${toggleShadow ? "shadow-active" : ""} box-container flex mt-8`}>
+    <div className={`${toggleShadow ? "shadow-active" : ""} box-container flex iphone:flex-col mt-8`}>
       {navPills.map((pill) => (
-        <NavPill key={pill} onChoose={selectPill} isActive={currentItem === pill} title={pill}>
-          {pill === "مخاطبین" && 6}
-        </NavPill>
+        <NavPill key={pill} onChoose={selectPill} isActive={currentItem === pill} title={pill} />
       ))}
     </div>
   );

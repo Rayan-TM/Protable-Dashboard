@@ -6,9 +6,9 @@ export default function PriceTableHeader({priceTableData}) {
   const {toggleShadow} = useContext(globalContext)
 
   return (
-    <div className={`${toggleShadow ? "shadow-active" : ""} box-container price-table`}>
+    <div className={`${toggleShadow ? "shadow-active" : ""} box-container price-table overflow-x-auto`}>
       <table className="w-full text-center">
-        <thead>
+        <thead >
           <tr>
             <td></td>
             <td>
@@ -32,7 +32,7 @@ export default function PriceTableHeader({priceTableData}) {
         <tbody className="my-20 text-sm font-medium">
           {priceTableData.map((data) => (
             <tr key={data.id} className="[&:nth-child(odd)]:bg-gray-200 hover:bg-gray-200 h-12">
-              <td>{data.title}</td>
+              <td className="whitespace-nowrap">{data.title}</td>
               <td>{data.free ? <Check size={18} /> : <Cancel size={18} />}</td>
               <td>
                 {data.base ? <Check size={18} /> : <Cancel size={18} />}
