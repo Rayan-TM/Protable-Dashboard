@@ -31,6 +31,7 @@ export default function Login() {
           }
           localStorage.setItem("Token", validUser.Token);
           navigate("/");
+          navigate(0)
         } else {
           Toast1.fire({
             title: "کاربری با این مشخصات وجود ندارد",
