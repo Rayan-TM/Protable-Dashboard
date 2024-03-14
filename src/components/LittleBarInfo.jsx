@@ -17,7 +17,7 @@ export default function LittleBarInfo({
       <span className="text-sm mb-7 block">{title}</span>
       <div className="w-2/3 mx-auto flex flex-col text-center gap-3">
         <LittleBarChart
-          data={smallBarChartDatas?.[0]?.values}
+          data={smallBarChartDatas[0].values}
           colors={colors}
         />
         <span style={{ color: colors[0] }} className="text-2xl font-semibold">

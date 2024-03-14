@@ -28,7 +28,7 @@ export default function LargeTable({
         } overflow-x-auto box-container border-2 border-gray-300 `}
       >
         <h1 className="font-bold text-3xl mb-3">{pageTitle}</h1>
-        <table className="large-table">
+        <table className="large-table w-full">
           <thead>
             <tr>
               {thead.map((title) => (

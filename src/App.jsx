@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React from "react";
 import "./App.css";
 import routes from "./routes";
 import { useRoutes } from "react-router-dom";

@@ -21,7 +21,7 @@ export default function useFetch(url) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newItem),
-    })
+    }).then(res => getItem(url))
   }
 
   async function removeItem(url, id) {

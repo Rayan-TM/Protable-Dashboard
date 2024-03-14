@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import TopSidebar from "./TopSidebar";
 import SidebarMenu from "./SidebarMenu";
 import { globalContext } from "../Contexts/globalContext";
-import { createPortal } from "react-dom";
 import LargeSidebarMenu from "./LargeSidebarMenu";
 
 export default function SideBar() {
@@ -54,7 +53,7 @@ export default function SideBar() {
         </div>
         <div
           onClick={() => setToggleSidebar(false)}
-          className={` bg-gray-300/50 w-full h-screen`}
+          className={` bg-gray-300/50 w-full min-h-screen`}
         ></div>
       </div>
     </>

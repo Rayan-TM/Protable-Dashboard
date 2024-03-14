@@ -5,7 +5,7 @@ import useSelect from '../hooks/useSelect'
 
 export default function SubsetUser({ children, role, firstname, lastname, status }) {
 
-  const [title, selectHandler] = useSelect()
+  const [ selectHandler] = useSelect()
   return (
     <div className="flex justify-between border-b-[1px] border-gray-300 py-5">
       <div className="flex gap-3">
@@ -17,7 +17,7 @@ export default function SubsetUser({ children, role, firstname, lastname, status
       </div>
       <div className="flex items-center gap-3">
         <span
-          className={`text-xs p-2 rounded-md ${
+          className={`text-xs p-2 rounded-md galaxy:hidden ${
             status === "رد شده"
               ? "bg-red-500"
               : status === "در انتظار"

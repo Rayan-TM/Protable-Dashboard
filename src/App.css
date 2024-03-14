@@ -142,17 +142,19 @@ svg path.land:hover {
 
 /* loader */
 .lds-facebook {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
   position: relative;
   width: 80px;
   height: 80px;
+  margin: 0 auto;
 }
 .lds-facebook div {
   display: inline-block;
   position: absolute;
-  left: 8px;
+  left: 50%;
   width: 16px;
-  background: #fff;
+  background: #10B759; 
   animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
 }
 .lds-facebook div:nth-child(1) {

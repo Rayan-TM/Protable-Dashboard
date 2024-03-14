@@ -1,13 +1,13 @@
 import React, { useState } from "react";
+import { createPortal } from "react-dom";
 import SelectTodoLabel from "./SelectTodoLabel";
 import { Cancel } from "./icons";
-import { createPortal } from "react-dom";
 import SelectTodoTime from "./SelectTodoTime";
 import SelectTodoDate from "./SelectTodoDate";
 import SelectTodoParticipants from "./SelectTodoParticipants";
 
-export default function NewTodoForm({ allItems, closeForm, submitForm }) {
-  const [activeLabels, setActiveLabels] = useState([allItems[0]]);
+export default function NewTodoForm({ labels, closeForm, submitForm }) {
+  const [activeLabels, setActiveLabels] = useState([labels[0]]);
   const [date, setDate] = useState();
   const [time, setTime] = useState();
   const [selectedUsers, setSelectedUsers] = useState([]);
@@ -27,6 +27,7 @@ export default function NewTodoForm({ allItems, closeForm, submitForm }) {
       isDeleted: false,
     };
     submitForm(newTodoValues);
+    closeForm()
   }
 
   return createPortal(
@@ -55,7 +56,7 @@ export default function NewTodoForm({ allItems, closeForm, submitForm }) {
             <label htmlFor="label">برچسب ها</label>
             <SelectTodoLabel
               onChange={(value) => setActiveLabels(value)}
-              options={allItems}
+              options={labels}
               values={activeLabels}
             />
           </div>

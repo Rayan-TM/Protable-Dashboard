@@ -28,7 +28,10 @@ export default function TodoDetails({ data }) {
             <Edit size={14} />
           </SmallButton>
           <SmallButton
-            onClickHandler={() => changeState(data.id, "isDeleted")}
+            onClickHandler={() => {
+              changeState(data.id, "isDeleted");
+              setSelectedTodo("");
+            }}
             hasBorder
             title="حذف وظیفه"
           >
@@ -43,12 +46,8 @@ export default function TodoDetails({ data }) {
             <TodoLabel labels={data.labels} />
             <Star color={data.hasStar ? "#FFB822" : "#BABABA"} size={18} />
             <div className="text-gray-300 text-xs font-medium whitespace-nowrap flex flex-col gap-2">
-              <span>
-                {data.date}
-              </span>
-              <span>
-                {data.time}
-              </span>
+              <span>{data.date}</span>
+              <span>{data.time}</span>
             </div>
           </div>
         </div>

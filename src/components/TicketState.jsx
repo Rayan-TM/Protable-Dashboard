@@ -1,19 +1,26 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { ArrowDown } from "./icons";
 import SelectBox from "./SelectBox";
 import TicketChart from "./Charts/TicketChart";
-import useFetch from '../hooks/useFetch'
+import useFetch from "../hooks/useFetch";
 import useSelect from "../hooks/useSelect";
 import { globalContext } from "../Contexts/globalContext";
+import Loader from "./Loader";
 
 export default function TicketState() {
-  const {datas} = useFetch("http://localhost:4000/ticketStateDatas")
-  const [title, selectHandler] = useSelect("2018")
-  const {toggleShadow} = useContext(globalContext)
+  const { datas, isPending, error } = useFetch(
+    "http://localhost:4000/ticketStateDatas"
+  );
+  const [title, selectHandler] = useSelect("2018");
+  const { toggleShadow } = useContext(globalContext);
 
-  const ticketStateData = datas.find(data => data.date === title)
+  const ticketStateData = datas.find((data) => data.date === title);
   return (
-    <div className={`${toggleShadow ? "shadow-active" : ""} box-container w-[70%] pc:w-full`}>
+    <div
+      className={`${
+        toggleShadow ? "shadow-active" : ""
+      } box-container w-[70%] pc:w-full`}
+    >
       <div className="flex justify-between mb-5">
         <span className="text-sm">وضعیت تیکت</span>
         <SelectBox
@@ -24,7 +31,12 @@ export default function TicketState() {
           onSelect={selectHandler}
         />
       </div>
-      <TicketChart datas={ticketStateData?.chartData}/>
+      {error && error}
+      {isPending ? (
+        <Loader />
+      ) : (
+        <TicketChart datas={ticketStateData.chartData} />
+      )}
     </div>
   );
 }

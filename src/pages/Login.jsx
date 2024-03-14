@@ -1,42 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import { MainForm } from "../components";
 import { Link, useNavigate } from "react-router-dom";
 import { Field, ErrorMessage } from "formik";
 import loginFormSchema from "../validation/loginFormSchema";
 import useFetch from "../hooks/useFetch";
-import { generateHash } from "./../utilities";
-import {Toast1} from "../components/Toast";
+import { Toast1 } from "../components/Toast";
 
 export default function Login() {
   const { datas } = useFetch("http://localhost:4000/users");
-  const savedEmailOrusernmae = localStorage.getItem("EmailOrUsername")
-  const savedPassword = localStorage.getItem('password')
+  const savedEmailOrusernmae = localStorage.getItem("EmailOrUsername");
+  const savedPassword = localStorage.getItem("password");
+  const [isLoggedInUser, setIsLoggedInUser] = useState();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const loginHandler = (values, { setSubmitting }) => {
-    const validUser = datas.find(
-      (data) =>
-        [data.username, data.email].includes(values.EmailOrUsername) &&
-        data.password === values.password
-    );
+    console.log(!localStorage.getItem("Token"));
+    if (!localStorage.getItem("Token")) {
+      const validUser = datas.find(
+        (data) =>
+          [data.username, data.email].includes(values.EmailOrUsername) &&
+          data.password === values.password
+      );
 
-    setTimeout(() => {
-      if (validUser) {
-        if (values.hasRemembered) {
-          localStorage.setItem("EmailOrUsername", values.EmailOrUsername);
-          localStorage.setItem("password", values.password);
+      setTimeout(() => {
+        if (validUser) {
+          if (values.hasRemembered) {
+            localStorage.setItem("EmailOrUsername", values.EmailOrUsername);
+            localStorage.setItem("password", values.password);
+          }
+          localStorage.setItem("Token", validUser.Token);
+          navigate("/");
+        } else {
+          Toast1.fire({
+            title: "کاربری با این مشخصات وجود ندارد",
+            icon: "error",
+          });
         }
-        localStorage.setItem('Token', generateHash())
-          navigate('/')
-      } else {
-        Toast1.fire({
-          title: "کاربری با این مشخصات وجود ندارد",
-          icon: "error",
-        })
-      }
+        setSubmitting(false);
+      }, 1000);
+    } else {
+      setIsLoggedInUser(true);
       setSubmitting(false);
-    }, 3000);
+    }
   };
 
   const loginFormProps = {
@@ -54,9 +60,9 @@ export default function Login() {
     },
   };
 
-  if(savedEmailOrusernmae && savedPassword){
-    loginFormProps.initialValues.EmailOrUsername = savedEmailOrusernmae
-    loginFormProps.initialValues.password = savedPassword
+  if (savedEmailOrusernmae && savedPassword) {
+    loginFormProps.initialValues.EmailOrUsername = savedEmailOrusernmae;
+    loginFormProps.initialValues.password = savedPassword;
   }
   return (
     <MainForm {...loginFormProps}>
@@ -72,6 +78,12 @@ export default function Login() {
       />
       <Field type="password" name="password" placeholder="رمز عبور" />
       <ErrorMessage name="password" component="span" className="err-msg" />
+      {isLoggedInUser && (
+        <span className="text-red-500 text-sm">
+          کاربری از قبل وارد شده است. لطفا ابتدا از حساب کنونی خارج و سپس دوباره
+          تلاش کنید.
+        </span>
+      )}
       <div className="flex justify-between text-xs items-center font-semibold">
         <div className="flex items-center gap-x-2">
           <Field

@@ -2,7 +2,7 @@ const customChartLegend = (props) => {
   const { payload } = props;
 
   return (
-    <ul className="flex justify-center gap-5">
+    <ul className="flex justify-center gap-5 galaxy:hidden">
       {payload.map((entry, index) => (
         <div key={index} className="flex items-center gap-2">
           <span

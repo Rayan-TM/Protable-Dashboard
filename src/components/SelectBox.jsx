@@ -23,8 +23,8 @@ export default function SelectBox({ icon, title, options, hasBorder, onSelect })
 
       <div
         className={`${
-          isHidden ? "opacity-0 -z-50 top-12" : "opacity-1 z-10 top-7"
-        } select-box custom-scrollbar`}
+          isHidden ? "opacity-0 -z-50 h-0 top-12 " : "opacity-1 h-fit z-10 top-7 "
+        } select-box custom-scrollbar `}
       >
         {options.map((option) => (
           <span onClick={selectHandler} key={option}>{option}</span>

@@ -5,6 +5,7 @@ import { Field, ErrorMessage } from "formik";
 import registerFormSchema from "../validation/registerFormSchema";
 import useFetch from "../hooks/useFetch";
 import {Toast1} from "../components/Toast";
+import { generateHash } from "./../utilities";
 
 export default function Register() {
   const { datas, setItem } = useFetch("http://localhost:4000/users");
@@ -12,6 +13,7 @@ export default function Register() {
 
   const registerHandler = (values, { setSubmitting }) => {
     const username = `${values.firstname}${values.lastname}`;
+    const Token = generateHash()
     const userExists = datas.find((data) => data.email === values.email);
     if (userExists) {
       Toast1.fire({
@@ -21,7 +23,7 @@ export default function Register() {
       setSubmitting(false)
     } else {
       setTimeout(() => {
-        setItem({ ...values, username });
+        setItem({ ...values, username, Token });
         setSubmitting(false);
         Toast1.fire({
           title: "ثبت نام با موفقیت انجام شد.",

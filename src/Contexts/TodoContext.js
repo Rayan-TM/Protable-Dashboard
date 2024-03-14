@@ -8,7 +8,6 @@ export default function TodoContextProvider({ children }) {
   const { datas, editItem, setItem } = useFetch(baseUrl);
   const [filteredItems, setFilteredItems] = useState([]);
   const [filterLabel, setFilterLabel] = useState("فیلتر");
-  const [searchValue, setSearchValue] = useState("");
   const [searchedItems, setSearchedItems] = useState([]);
   const [selectedTodo, setSelectedTodo] = useState("");
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
@@ -16,12 +15,6 @@ export default function TodoContextProvider({ children }) {
   useEffect(() => {
     filterItemsHandler();
   }, [filterLabel, datas]);
-
-  function searchHandler() {
-    setSearchedItems(
-      filteredItems.filter((item) => item.title.includes(searchValue))
-    );
-  }
 
   function changeState(id, prop) {
     const filtereditem = datas.filter((data) => data.id === id);
@@ -71,13 +64,11 @@ export default function TodoContextProvider({ children }) {
         filterLabel,
         setFilterLabel,
         sortItems,
-        searchValue,
-        setSearchValue,
         setSelectedTodo,
         selectedTodo,
         setItem,
         searchedItems,
-        searchHandler,
+        setSearchedItems,
         isSideBarOpen,
         setIsSideBarOpen,
       }}

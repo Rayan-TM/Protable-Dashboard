@@ -5,6 +5,7 @@ import SelectBox from "./SelectBox";
 import useFetch from "../hooks/useFetch";
 import useSelect from "../hooks/useSelect"
 import { globalContext } from "../Contexts/globalContext";
+import Loader from "./Loader";
 
 export default function MonthSaleChart() {
   const {toggleShadow} = useContext(globalContext)
@@ -23,9 +24,8 @@ export default function MonthSaleChart() {
           onSelect={selectHandler}
         />
       </div>
-      {isPending && <div>Loading... </div>}
       {error && <div>{error}</div>}
-      {monthlySaleData && <LargeBarChart data={monthlySaleData.chartData} />}
+      {isPending ? <Loader /> : <LargeBarChart data={monthlySaleData.chartData} />}
     </div>
   );
 }

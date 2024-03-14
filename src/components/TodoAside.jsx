@@ -3,7 +3,7 @@ import { globalContext } from "../Contexts/globalContext";
 import { Cube, Send } from "./icons";
 import NewTodoForm from "./NewTodoForm";
 import { TodoContext } from "../Contexts/TodoContext";
-const listItems = [
+const labels = [
   { name: "پشتیبانی قالب", color: "bg-orange-100" },
   { name: "فریلنس", color: "bg-green-200" },
   { name: "اجتماعی", color: "bg-red-500" },
@@ -55,7 +55,7 @@ export default function TodoAside() {
         </ul>
         <span className="mx-5 my-4 block font-bold text-sm">برچسب ها</span>
         <ul className="todo-aside-list">
-          {listItems.map((item) => (
+          {labels.map((item) => (
             <li key={item.name} className="last:mb-5 last:border-none">
               <div>
                 <span className={`${item.color} w-3 h-3 rounded-full`}></span>
@@ -67,7 +67,7 @@ export default function TodoAside() {
       </div>
       {isNewTodoOpen && (
         <NewTodoForm
-          allItems={listItems}
+          labels={labels}
           closeForm={closeNewTodoForm}
           submitForm={submitNewTodoForm}
         />

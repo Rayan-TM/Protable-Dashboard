@@ -7,7 +7,7 @@ export default function SocialMedia({ children }) {
       <small className="font-medium text-gray-300 ">
         با حساب شبکه اجتماعی خود وارد شوید.
       </small>
-      <div className="flex justify-center mt-4 gap-x-3">
+      <div className="flex justify-center iphone:flex-wrap mt-4 gap-3">
         {children.map((child, index) => (
           <div
             key={index}

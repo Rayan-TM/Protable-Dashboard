@@ -8,6 +8,7 @@ import { ArrowDown } from "./icons";
 import useFetch from "../hooks/useFetch";
 import useSelect from "../hooks/useSelect";
 import { globalContext } from "../Contexts/globalContext";
+import Loader from "./Loader";
 
 export default function IncomeDistribution() {
   const { datas, isPending, error } = useFetch(
@@ -49,14 +50,18 @@ export default function IncomeDistribution() {
           <span>سفارشات</span>
           <span>درآمد</span>
         </div>
-
-        {tableData?.detail.map((data) => (
-          <div key={data.id} className="font-medium">
-            <span className="w-10">{data.province}</span>
-            <span className="mr-10">{data.orders}</span>
-            <span className="text-green-500">{data.income}</span>
-          </div>
-        ))}
+        {error && error}
+        {isPending ? (
+          <Loader />
+        ) : (
+          tableData.detail.map((data) => (
+            <div key={data.id} className="font-medium">
+              <span className="w-10">{data.province}</span>
+              <span className="mr-10">{data.orders}</span>
+              <span className="text-green-500">{data.income}</span>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

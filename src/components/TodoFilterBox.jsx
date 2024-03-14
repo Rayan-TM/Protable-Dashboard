@@ -3,16 +3,15 @@ import SelectBox from "./SelectBox";
 import { ArrowDown, Search, BurgerMenu } from "./icons";
 import { globalContext } from "../Contexts/globalContext";
 import { TodoContext } from "../Contexts/TodoContext";
+import SearchBox from "./SearchBox";
 
 export default function TodoFilterBox() {
   const { toggleShadow } = useContext(globalContext);
-
   const {
     setFilterLabel,
     sortItems,
-    searchValue,
-    setSearchValue,
-    searchHandler,
+    setSearchedItems,
+    filteredItems,
     setIsSideBarOpen,
   } = useContext(TodoContext);
 
@@ -50,21 +49,11 @@ export default function TodoFilterBox() {
         options={["صعودی", "نزولی"]}
         onSelect={sortHandler}
       />
-      <div className="border-[1px] rounded-md border-gray-300 overflow-hidden flex mr-auto w-1/2">
-        <input
-          onChange={(e) => setSearchValue(e.target.value)}
-          value={searchValue}
-          className="outline-none text-sm px-3 py-2 w-full"
-          type="text"
-          placeholder="جستجوی وظیفه"
-        />
-        <button
-          onClick={searchHandler}
-          className="w-10 border-r-[1px] border-gray-300 flex justify-center items-center"
-        >
-          <Search size={14} />
-        </button>
-      </div>
+      <SearchBox
+        placeholder="جستجوی وظیفه"
+        allItems={filteredItems}
+        setSearchItems={setSearchedItems}
+      />
     </div>
   );
 }

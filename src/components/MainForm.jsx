@@ -25,7 +25,7 @@ export default function MainForm({
   validationSchema,
 }) {
   return (
-    <div className="bg-white w-[440px] tablet:w-full mx-auto rounded-md p-10 text-center shadow-md">
+    <div className="bg-white w-[440px] tablet:w-full iphone:p-4 mx-auto rounded-md p-10 text-center shadow-md">
       <h1 className="text-2xl font-bold my-10">
         <Link to="/">
           Pro<span className="text-blue-500 ">table</span>
@@ -62,7 +62,7 @@ export default function MainForm({
       </SocialMedia>}
       <hr className="my-8 border-gray-300" />
       <small className="font-medium text-gray-300">{smText}</small>
-      <div className="flex justify-center items-center gap-2 mt-5">
+      <div className="flex justify-center iphone:flex-wrap items-center gap-2 mt-5">
         <Link
           to={linkSrc}
           className=" w-fit border-[1px] border-gray-300 rounded-[5px] px-3 font-medium hover:bg-gray-300 transition-all duration-300"

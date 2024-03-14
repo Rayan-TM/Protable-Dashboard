@@ -142,7 +142,7 @@
   }
 
   .select-box {
-    @apply absolute flex flex-col transition-all duration-300 left-0 border-[1px] shadow-md w-32 bg-white rounded-md py-2 max-h-[200px] overflow-y-auto z-50;
+    @apply absolute flex flex-col transition-opacity duration-300 left-0 border-[1px] shadow-md w-32 bg-white rounded-md py-2 max-h-[200px] overflow-y-auto z-50;
   }
 
   .select-box span {
@@ -234,5 +234,18 @@
 
   .date-picker .days > div{
     @apply py-1 
+  }
+
+  .product-info li{
+    @apply laptop:text-lg 
+  }
+
+  .product-info li span{
+    @apply font-medium text-green-500 
+
+  }
+
+  .icon-btn{
+    @apply hover:bg-white p-1 pb-0 w-1/5 rounded-md transition-colors duration-300
   }
 }
