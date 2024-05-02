@@ -8,7 +8,7 @@ export default function SingleContact({ firstname, lastname, role, image }) {
   const {toggleShadow} = useContext(globalContext)
 
   return (
-    <div className={`${toggleShadow ? "shadow-active" : ""} box-container w-[290px] flex items-center justify-between border-[1px] border-gray-300`}>
+    <div className={`${toggleShadow ? "shadow-active" : ""} box-container w-[250px] flex items-center justify-between border-[1px] border-gray-300`}>
       <div className="flex items-center gap-3">
         <Avatar src={image ? image : "./assets/images/default-avatar.webp"} />
         <div className="flex flex-col gap-3 font-medium">
