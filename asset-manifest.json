@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Protable-Dashboard/static/css/main.aba659d8.css",
-    "main.js": "/Protable-Dashboard/static/js/main.49c8d8d9.js",
+    "main.js": "/Protable-Dashboard/static/js/main.de7a722b.js",
     "static/media/mountain.png": "/Protable-Dashboard/static/media/mountain.b2b487f7b9044361b94f.png",
     "index.html": "/Protable-Dashboard/index.html",
     "main.aba659d8.css.map": "/Protable-Dashboard/static/css/main.aba659d8.css.map",
-    "main.49c8d8d9.js.map": "/Protable-Dashboard/static/js/main.49c8d8d9.js.map"
+    "main.de7a722b.js.map": "/Protable-Dashboard/static/js/main.de7a722b.js.map"
   },
   "entrypoints": [
     "static/css/main.aba659d8.css",
-    "static/js/main.49c8d8d9.js"
+    "static/js/main.de7a722b.js"
   ]
 }
